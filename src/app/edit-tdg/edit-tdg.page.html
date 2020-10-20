@@ -1,0 +1,748 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>editTdg</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title_text">TDG Shipping Document</ion-title>
+    <ion-buttons slot="end" class="text_view">
+      Truck Ticket ID : {{documentDetail.formnumber}}
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="none">
+       <ion-grid>
+         <ion-row>
+           <ion-col class="main_button" [ngClass]="{'active':selectedTab == 'consignor'}" (click)="tabSelection('consignor')" col-3>
+            Consignor
+            <!-- <ion-button expand="full" fill="default">Consignor</ion-button> -->
+
+           </ion-col>
+           <ion-col class="main_button" [ngClass]="{'active':selectedTab == 'carrier'}" (click)="tabSelection('carrier')" col-3>
+            Carrier
+            <!-- <ion-button expand="full" fill="default">Carrier</ion-button> -->
+
+           </ion-col>
+           <ion-col class="main_button" [ngClass]="{'active':selectedTab == 'consignee'}" (click)="tabSelection('consignee')" col-3>
+            Consignee
+            <!-- <ion-button expand="full" fill="default">Consignee</ion-button> -->
+
+           </ion-col>
+         </ion-row>
+         <!-- <ion-row class="row_1">
+           <ion-col class="ion-text-capitalize">
+             {{selectedTab}}
+           </ion-col>
+         </ion-row> -->
+       </ion-grid>
+    </ion-item>
+        
+
+
+
+
+  <form [formGroup]="ApplicationForm">
+
+    <div *ngIf="selectedTab == 'consignor'" class="section_1">
+      <ion-grid>
+      <ion-row class="row_1">
+        <ion-col class="ion-text-capitalize">
+          {{selectedTab}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="text_size" transparent lines="none">
+            <ion-label class="ion-text-wrap text_design" fixed>Consignor Name: </ion-label>
+            <ion-input  readonly="true" formControlName="ConsignorName" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" transparent lines="none">
+            <ion-label class="ion-text-wrap text_design" fixed>Load Point: </ion-label>
+            <ion-input type="text" formControlName="loadPoint" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+ 
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Address: </ion-label>
+            <ion-input  readonly="true" formControlName="ConsignorAddress" (keyup.enter)="onEnter()" type="text"> </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="text_design" fixed>Shipping Document: </ion-label>
+            <ion-input type="text" readonly="true" formControlName="ConsignorShippingDocument">  </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>City: </ion-label>
+            <ion-input type="text" formControlName="ConsignorCity" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="text_design" fixed>24-HOUR NUMBER: </ion-label>
+            <ion-input type="text" readonly="true" formControlName="Consignor24_NUMBER">  </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Province: </ion-label>
+            <ion-input type="text" formControlName="ConsignorProvince" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="text_design" fixed>ERAP Reference #: </ion-label>
+            <ion-input type="text" readonly="true" formControlName="ConsignorErap_Reference">  </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Postal Code: </ion-label>
+            <ion-input type="text" formControlName="ConsignorPostalCode" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="text_design" fixed>ERAP Telephone Number: </ion-label>
+            <ion-input type="text" readonly="true" formControlName="ConsignorERAPTelNumber">  </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Date Shipped: </ion-label>
+            <ion-input type="text" formControlName="ConsignorDateShipped" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="text_design" fixed>Name of Carrier: </ion-label>
+            <ion-input type="text" readonly="true" formControlName="ConsignorNameCarrier">  </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Consignee Name: </ion-label>
+            <ion-input type="text" formControlName="ConsignorConsigneeName" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="text_design" fixed>Destination (Delivery Point): </ion-label>
+            <ion-textarea type="text" readonly="true" formControlName="ConsignorDestination"></ion-textarea>
+            <!-- <ion-input type="text" readonly="true" formControlName="ConsignorDestination">  </ion-input> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
+      
+    <div *ngIf="selectedTab == 'carrier'" class="section_1">
+      <ion-grid>
+      <ion-row class="row_1">
+        <ion-col class="ion-text-capitalize">
+          {{selectedTab}}
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Carrier Name: </ion-label>
+            <ion-input  readonly="true" formControlName="CarrierName" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Driver / Unit #: </ion-label>
+            <ion-input type="text" formControlName="CarrierDriver" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Truck Ticket: </ion-label>
+            <ion-input  readonly="true" formControlName="CarrierTruckTicket" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Tractor #: </ion-label>
+            <ion-input type="text" formControlName="CarrierTractor" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Driver Name: </ion-label>
+            <ion-input  readonly="true" formControlName="CarrierDriverName" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Trailer(s): </ion-label>
+            <ion-input type="text" formControlName="CarrierTrailer" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Address: </ion-label>
+            <ion-input  readonly="true" formControlName="CarrierAddress" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>City: </ion-label>
+            <ion-input type="text" formControlName="CarrierCity" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Province: </ion-label>
+            <ion-input  readonly="true" formControlName="CarrierProvince" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Postal Code: </ion-label>
+            <ion-input type="text" formControlName="CarrierPostalCode" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="selectedTab == 'consignee'" class="section_1">
+      <ion-grid>
+      <ion-row class="row_1">
+        <ion-col class="ion-text-capitalize">
+          {{selectedTab}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Consignee Name: </ion-label>
+            <ion-input  readonly="true" formControlName="ConsigneeName" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Address: </ion-label>
+            <ion-input type="text" formControlName="ConsigneeAddress" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Province: </ion-label>
+            <ion-input  readonly="true" formControlName="ConsigneeProvince" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>City: </ion-label>
+            <ion-input type="text" formControlName="ConsigneeCity" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Postal Code: </ion-label>
+            <ion-input  readonly="true" formControlName="ConsigneePostalCode" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
+
+    <div class="section_2">
+      <ion-row>
+        <ion-col class="heading_1">
+          REGULATED DANGEROUS GOODS
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>UN Number: </ion-label>
+            <ion-input  readonly="true" formControlName="RegUnNumber" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Shipping Name: </ion-label>
+            <ion-textarea type="text" formControlName="RegShippingName" readonly></ion-textarea>
+            <!-- <ion-input type="text" formControlName="RegShippingName" readonly> </ion-input> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Primary Class: </ion-label>
+            <ion-input type="text" formControlName="RegPrimaryClass" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Subsidiary Class: </ion-label>
+            <ion-input  readonly="true" formControlName="RegSubsidiaryClass" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Packing Group: </ion-label>
+            <ion-input type="text" formControlName="RegPackingGroup" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+
+        
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Hazard Description: </ion-label>
+            <!-- <ion-select formControlName="RegHazardDescription">
+              <ion-select-option value="Yes" class="text_option">Toxic by inhalation</ion-select-option>
+              <ion-select-option value="No" class="text_option">-</ion-select-option>
+            </ion-select> -->
+            <ion-input type="text" formControlName="RegHazardDescription" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Total Quantity: </ion-label>
+            <ion-input class="edit_text" formControlName="RegTotalQuantity" (keyup.enter)="onEnter()" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Units L/Kg: </ion-label>
+            <!-- <ion-input type="text" formControlName="RegUnitLKg" > </ion-input> -->
+
+            <ion-select class="edit_text1" formControlName="RegUnitLKg">
+              <ion-select-option value="UN02">m3</ion-select-option>
+              <ion-select-option value="UN03">kg</ion-select-option>
+              <ion-select-option value="UN04">L</ion-select-option>
+              <ion-select-option value="06086137-6a7d-4c41-bd6d-e12593ba23b4">NEQ (kg)</ion-select-option>
+              <ion-select-option value="0d6478a3-ea2c-4e0c-85ff-af9b00b15686">articles</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>SDS Attach: </ion-label>
+            <ion-input type="text" formControlName="RegSdsAttach" readonly> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="heading_2">
+          NON REGULATED DANGEROUS GOODS
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Packages: </ion-label>
+            <!-- <ion-input  readonly="true" formControlName="NonRegPackage" (keyup.enter)="onEnter()" type="text">
+            </ion-input> -->
+            <ion-textarea readonly="true" formControlName="NonRegPackage" (keyup.enter)="onEnter()" type="text">
+
+            </ion-textarea>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Description: </ion-label>
+            <!-- <ion-input type="text" formControlName="NonRegDescription" readonly> </ion-input> -->
+
+            <ion-textarea type="text" formControlName="NonRegDescription" readonly> </ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+        
+      <ion-row class="row_design">
+        <ion-col size="6">
+          <ion-item  class="text_size" lines="none" transparent>
+            <ion-label class="ion-text-wrap text_design" fixed>Weight: </ion-label>
+            <!-- <ion-input type="text" formControlName="NonRegWeight" readonly> </ion-input> -->
+            <ion-textarea type="text" formControlName="NonRegWeight" readonly> </ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="section_3">
+       <ion-grid>
+          <ion-row class="row_1">
+            <ion-col class="ion-text-capitalize">
+              Consignor
+            </ion-col>
+          </ion-row>
+          
+          <ion-row class="row_2">
+            <ion-col>
+              I hereby declare that the contents of this consignment are fully and accurately described above (or below) by the proper shipping name, and are classified, packaged, marked and labelled/placarded, and are in all respects in proper condition for transport according to applicable international and national governmental regulations.
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="6">
+              <ion-item class="text_size" lines="none" transparent>
+                <ion-label class="ion-text-wrap text_design" fixed>Signature: </ion-label>
+                <ion-input  readonly="true" formControlName="ConsignorSignature" (keyup.enter)="onEnter()" type="text">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+    
+            <ion-col size="6">
+              <ion-item  class="text_size" lines="none" transparent>
+                <ion-label class="ion-text-wrap text_design" fixed>Name of Authorized Person (Print): </ion-label>
+                <ion-input type="text" formControlName="ConsignorNameAuthPerson" readonly> </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row class="row_design">
+            <ion-col size="6">
+
+            </ion-col>
+            <ion-col size="6">
+              <ion-item class="text_size" lines="none" transparent>
+                <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
+                <ion-input  readonly="true" formControlName="ConsignorStatus" (keyup.enter)="onEnter()" type="text">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+    </div>
+
+    <div class="section_4">
+      <ion-grid>
+         <ion-row class="row_1">
+           <ion-col class="ion-text-capitalize">
+            Carrier
+           </ion-col>
+         </ion-row>
+         <ion-row>
+          <ion-col size="6">
+            <ion-item class="text_size" lines="none" transparent>
+              <ion-label class="ion-text-wrap text_design" fixed>Name of Authorized Person (Print): </ion-label>
+              <ion-input  readonly="true" formControlName="CarrierNameAuthPerson" (keyup.enter)="onEnter()" type="text">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col size="6">
+            <ion-item  class="text_size" lines="none" transparent>
+              <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
+              <ion-input type="text" formControlName="CarrierStatus" readonly> </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="section_5">
+      <ion-grid>
+         <ion-row class="row_1">
+           <ion-col class="ion-text-capitalize">
+            Consignee
+           </ion-col>
+         </ion-row>
+         
+         <ion-row class="row_2">
+           <ion-col>
+            Received in apparent good order
+           </ion-col>
+         </ion-row>
+
+         <ion-row>
+           <ion-col size="6">
+             <ion-item class="text_size" lines="none" transparent>
+               <ion-label class="ion-text-wrap text_design" fixed>Consignee Signature: </ion-label>
+               <ion-input  readonly="true" formControlName="ConsigneeSignature" (keyup.enter)="onEnter()" type="text">
+               </ion-input>
+             </ion-item>
+           </ion-col>
+   
+           <ion-col size="6">
+             <ion-item  class="text_size" lines="none" transparent>
+               <ion-label class="ion-text-wrap text_design" fixed>Name of Authorized Person (Print): </ion-label>
+               <ion-input type="text" formControlName="ConsigneeNameAuthPerson" readonly> </ion-input>
+             </ion-item>
+           </ion-col>
+         </ion-row>
+         <ion-row class="row_design">
+          <ion-col size="6">
+
+          </ion-col>
+           <ion-col size="6">
+             <ion-item class="text_size" lines="none" transparent>
+               <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
+               <ion-select class="edit_text1" formControlName="ConsigneeStatus">
+                <ion-select-option value="Received">Received</ion-select-option>
+                <ion-select-option value="Residue">Residue</ion-select-option>
+              </ion-select>
+
+               <!-- <ion-input  readonly="true" formControlName="ConsigneeStatus" (keyup.enter)="onEnter()" type="text">
+               </ion-input> -->
+             </ion-item>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+
+   </div>
+   <ion-grid>
+     <ion-row>
+       <ion-col size="6" class="button_cancel" (click)="cancelRequest()">
+        <button ion-button class="button_text1">CANCEL</button>
+       </ion-col>
+
+       <ion-col size="6" class="button_submit" (click)="sendPostRequest()">
+        <button ion-button class="button_text">SUBMIT</button>
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+       
+  </form> 
+  
+
+
+
+      <!-- <form [formGroup]="ApplicationForm"> -->
+<!-- 
+           <ion-grid>
+             <ion-row>
+               <ion-col size="6">
+                <ion-item>
+                  <ion-label position="fixed" color="primary">Consignor Name</ion-label>
+                  <ion-input type="text" formControlName="ConsignorName" class="form-controll" required></ion-input>
+                </ion-item>
+               </ion-col>
+
+               <ion-col size="6">
+                <ion-item>
+                  <ion-label position="fixed" color="primary">Load Point</ion-label>
+                  <ion-input type="text" formControlName="loadPoint" class="form-controll" required></ion-input>
+                </ion-item>
+               </ion-col>
+             </ion-row>
+           </ion-grid> -->
+        
+           <!-- <ion-item class="text_size" lines="none">
+             <ion-grid>
+               <ion-row>
+                 <ion-col size="6">
+                  <span><b>Consignor Name: </b>Tormaline Oil Corp.</span> 
+                 </ion-col>
+                 <ion-col size="6">
+                  <span><b>Load Point: </b>15-12-050-21W5.</span> 
+                 </ion-col>
+               </ion-row>
+
+               <ion-row>
+                <ion-col size="6">
+                 <span><b>Address: </b>3700, 250-6th Ave SW</span> 
+                </ion-col>
+                <ion-col size="6">
+                 <span><b>Shipping Document: </b>abc.png</span> 
+                </ion-col>
+              </ion-row>
+
+
+              <ion-row>
+                <ion-col size="6">
+                 <span><b>City: </b>Calgary</span> 
+                </ion-col>
+                <ion-col size="6">
+                 <span><b>24-HOUR NUMBER: </b>1-877-504-4252 </span> 
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="6">
+                 <span><b>Province: </b>Alberta</span> 
+                </ion-col>
+                <ion-col size="6">
+                 <span><b>ERAP Reference #:</b>ERP2-0010-303</span> 
+                </ion-col>
+              </ion-row>
+
+
+              <ion-row>
+                <ion-col size="6">
+                 <span><b>Postal Code: </b>T2P 3X1</span> 
+                </ion-col>
+                <ion-col size="6">
+                 <span><b>ERAP Telephone Number: </b>1-909-233-2345</span> 
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="6">
+                 <span><b>Shipping Date: </b>2020-09-15</span> 
+                </ion-col>
+                <ion-col size="6">
+                 <span><b>Name of Carrier: </b>Trimac Energy Services Ltd.</span> 
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="6">
+                 <span><b>Consignee Name: </b>Secure Energy Service</span> 
+                </ion-col>
+                <ion-col size="6">
+                 <span><b>Destination (Delivery Point): </b>Secure Drayton Valley 03-05-49-6W5</span> 
+                </ion-col>
+              </ion-row>
+             
+             </ion-grid>
+           </ion-item>
+
+           <ion-item class="text_size" lines="none">
+            <ion-grid>
+              <ion-row class="row_1">
+                <ion-col >
+                  REGULATED DANGEROUS GOODS
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                 <span><b>UN Number: </b>UN7898</span> 
+                </ion-col>
+                <ion-col size="6">
+                 <span><b>Shipping Name: </b>Petrolium sour crude oil farm.</span> 
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+               <ion-col size="6">
+                <span><b>Primary Class: </b>3</span> 
+               </ion-col>
+               <ion-col size="6">
+                <span><b>Subsidiary Class: </b>5.1</span> 
+               </ion-col>
+             </ion-row>
+
+
+             <ion-row>
+               <ion-col size="6">
+                <span><b>Packing Group: </b>1{{ this.ApplicationForm.ConsignorName}}</span> 
+               </ion-col>
+               <ion-col size="6">
+                <span><b>Hazzard Description: </b>Toxic by inhalation </span> 
+               </ion-col>
+             </ion-row>
+
+             <ion-row>
+               <ion-col size="6">
+                <span><b>Total Quantity: </b></span>
+                <span><ion-input formControlName="quantity" type="text" required></ion-input></span>  
+           
+               </ion-col>
+               <ion-col size="6">
+                <span><b>Unit L/Kg:</b>m3</span> 
+               </ion-col>
+             </ion-row>
+
+
+             <ion-row>
+               <ion-col size="6">
+                <span><b>SDS Attach: </b>asc.png</span> 
+               </ion-col>
+               <ion-col size="6">
+               </ion-col>
+             </ion-row>
+            
+            </ion-grid>
+          </ion-item> -->
+
+      <!-- </form> -->
+
+  </ion-list>
+
+  
+</ion-content>

@@ -1,0 +1,630 @@
+[
+    {
+        "_id": "1b47c5c6-4e57-42e7-8e3d-4a60294f315c",
+        "formnumber": "TOC001095",
+        "Organizationid": "d5a32954-bf14-45ae-9889-be9116c4c9fd",
+        "Buid": "3ea7aa41-b380-4716-a344-24fac634687a",
+        "Facilityid": "863877f5-24d9-4115-b40a-0a97adc81576",
+        "statusIcon": "shipped.png",
+        "iconStatusText": "In Transit",
+        "type": "TDG Shipping Document",
+        "erapNumber": "ERP2-0010-303",
+        "generator": {
+            "name": "Tourmaline Oil Corp.",
+            "signatureLocation": "https://ez2trackattachments.blob.core.windows.net/tourmalinetrimacpilot/signatureimage/deansoucy/No-Sign.png",
+            "sourcesitelocation": "15-12-050-21W5",
+            "address": {
+                "street": "3700 , 250 - 6th avenue SW",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 3H7"
+            },
+            "dateshipped": {
+                "$date": "2020-09-15T18:13:02.000Z"
+            },
+            "timeshipped": "18:13:02",
+            "TruckerEmailFlag": false,
+            "emergency24hrnumber": "1-877-504-4252",
+            "nameofauthorisedperson": "Dean Soucy",
+            "status": {
+                "id": "010155ef-a1f0-4192-ad73-9c3ba8ef58dd",
+                "name": "Shipped"
+            },
+            "receivingsitelocation": "Secure Drayton Valley 03-05-49-6W5"
+        },
+        "receiver": {
+            "id": "e0ad865e-a9e7-428f-93e7-f2addd84ce07",
+            "name": "Secure Energy Services",
+            "signatureLocation": "",
+            "address": {
+                "street": "205 5 Ave SW #3600",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 2V7"
+            },
+            "status": "93f63de6-449b-4ff7-a297-103e311f2229",
+            "statusname": "Received"
+        },
+        "transporter": {
+            "id": "7fc12db5-3f20-40af-846d-5eee7c02e41e",
+            "name": "Trimac Energy Services Ltd.",
+            "signatureLocation": "",
+            "address": {
+                "street": "NA",
+                "city": {
+                    "id": "086099e0-eb94-4422-86e7-6bddadc6b305",
+                    "name": "Edmonton"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "NA"
+            },
+            "unitnumber": "DU1234",
+            "Tractor": "TRAC2222",
+            "driverName": "Jogn Andrew",
+            "Trailers": "TRAIL3333",
+            "wayBilNumber": "TT1111",
+            "nameofauthorisedperson": "Brad Bessette",
+            "status": "02280bb6-acb3-4748-ac24-76d334318e56",
+            "statusname": "Residue"
+        },
+        "shippingdetails": [
+            {
+                "unnumber": "UN3494",
+                "tdgshippingname": "Petroleum sour crude oil, flammable, toxic",
+                "PrimaryClass": "3",
+                "SubsidiaryClass": "6.1",
+                "packinggroup": "aead26fc-448c-42f4-afb3-92c4b0633633",
+                "ToxicByInhalation": "Yes",
+                "quantityshipped": "1234",
+                "unitsshipped": "UN02",
+                "NumberOfPackages": 0,
+                "safetyFile": [],
+                "residue": "Y"
+            },
+            {
+                "unnumber": "UN3494",
+                "tdgshippingname": "Petroleum sour crude oil, flammable, toxic",
+                "PrimaryClass": "3",
+                "SubsidiaryClass": "6.1",
+                "packinggroup": "aead26fc-448c-42f4-afb3-92c4b0633633",
+                "ToxicByInhalation": "Yes",
+                "quantityshipped": "1234",
+                "unitsshipped": "UN02",
+                "NumberOfPackages": 0,
+                "safetyFile": [],
+                "residue": "N"
+            }
+        ],
+        "NonRegulatedDangerousGoods": [
+            {
+                "Packages": "Package1",
+                "Description": "Description1",
+                "Weight": "1000 m3"
+            }
+        ],
+        "manifestFile": [],
+        "erapTelNumber": "1-800-265-0212",
+        "status": "",
+        "createdbyid": "123",
+        "createdby": "System Admin",
+        "createdon": {
+            "$date": "2020-09-15T18:13:02.000Z"
+        },
+        "modifiedbyid": "321",
+        "modifiedby": "Kerry Chase",
+        "modifiedon": {
+            "$date": "2019-10-03T17:43:11.000Z"
+        },
+        "shippingdetails[0]": {
+            "unitsshipped": "UN03",
+            "quantityshipped": "5"
+        },
+        "shippingdetails[1]": {
+            "quantityshipped": "5",
+            "unitsshipped": "UN03"
+        },
+        "shippingdetails[]": {
+            "quantityshipped": "5",
+            "unitsshipped": "UN03"
+        }
+    },
+    {
+        "_id": "0c63f02d-fde8-4083-85d3-31faa9d9005e",
+        "formnumber": "TOC001126",
+        "Organizationid": "d5a32954-bf14-45ae-9889-be9116c4c9fd",
+        "Buid": "3ea7aa41-b380-4716-a344-24fac634687a",
+        "Facilityid": "863877f5-24d9-4115-b40a-0a97adc81576",
+        "statusIcon": "received.png",
+        "iconStatusText": "Received",
+        "type": "TDG Shipping Document",
+        "erapNumber": "ERP2-0010-303",
+        "generator": {
+            "name": "Tourmaline Oil Corp.",
+            "signatureLocation": "https://ez2trackattachments.blob.core.windows.net/tourmalinetrimacpilot/signatureimage/deansoucy/No-Sign.png",
+            "sourcesitelocation": "15-12-050-21W5",
+            "address": {
+                "street": "3700 , 250 - 6th avenue SW",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 3H7"
+            },
+            "dateshipped": {
+                "$date": "2020-10-03T11:41:27.000Z"
+            },
+            "timeshipped": "11:41:27",
+            "TruckerEmailFlag": false,
+            "emergency24hrnumber": "1-877-504-4252",
+            "nameofauthorisedperson": "Dean Soucy",
+            "status": {
+                "id": "010155ef-a1f0-4192-ad73-9c3ba8ef58dd",
+                "name": "Shipped"
+            },
+            "receivingsitelocation": "Secure Drayton Valley 03-05-49-6W5"
+        },
+        "receiver": {
+            "id": "e0ad865e-a9e7-428f-93e7-f2addd84ce07",
+            "name": "Secure Energy Services",
+            "signatureLocation": "",
+            "address": {
+                "street": "205 5 Ave SW #3600",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 2V7"
+            },
+            "status": "93f63de6-449b-4ff7-a297-103e311f2229",
+            "statusname": "Received"
+        },
+        "transporter": {
+            "id": "7fc12db5-3f20-40af-846d-5eee7c02e41e",
+            "name": "Trimac Energy Services Ltd.",
+            "signatureLocation": "",
+            "address": {
+                "street": "NA",
+                "city": {
+                    "id": "086099e0-eb94-4422-86e7-6bddadc6b305",
+                    "name": "Edmonton"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "NA"
+            },
+            "unitnumber": "DU4",
+            "Tractor": "TR4",
+            "driverName": "Sam Doe",
+            "Trailers": "TR4",
+            "wayBilNumber": "TT4",
+            "nameofauthorisedperson": null,
+            "status": "400b2281-dc53-47d1-94cf-b773608c7488",
+            "statusname": "Delivered"
+        },
+        "shippingdetails": [
+            {
+                "unnumber": "UN1230",
+                "tdgshippingname": "Methanol",
+                "PrimaryClass": "3",
+                "SubsidiaryClass": "6.1",
+                "packinggroup": "aead26fc-448c-42f4-afb3-92c4b0633633",
+                "ToxicByInhalation": "Yes",
+                "quantityshipped": 4444,
+                "unitsshipped": "UN02",
+                "NumberOfPackages": 0,
+                "safetyFile": [],
+                "residue": "N"
+            }
+        ],
+        "NonRegulatedDangerousGoods": [
+            {
+                "Packages": null,
+                "Description": null,
+                "Weight": null
+            }
+        ],
+        "manifestFile": [],
+        "erapTelNumber": "1-800-265-0212",
+        "status": "",
+        "createdbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "createdby": "System Admin",
+        "createdon": {
+            "$date": "2020-10-03T11:41:27.000Z"
+        },
+        "modifiedbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "modifiedby": "System Admin",
+        "modifiedon": {
+            "$date": "2020-10-03T11:42:07.000Z"
+        }
+    },
+    {
+        "_id": "1bf193eb-efc9-4bbd-9d70-18a6cb7ba77f",
+        "formnumber": "TOC001125",
+        "Organizationid": "d5a32954-bf14-45ae-9889-be9116c4c9fd",
+        "Buid": "3ea7aa41-b380-4716-a344-24fac634687a",
+        "Facilityid": "863877f5-24d9-4115-b40a-0a97adc81576",
+        "Receivingsitelocationid": "113b5768-9b1a-4a44-a36f-a8bdb94fd14c",
+        "type": "TDG Shipping Document",
+        "statusIcon": "shipped.png",
+        "iconStatusText": "Shipped",
+        "generator": {
+            "name": "Tourmaline Oil Corp.",
+            "signatureLocation": "https://ez2trackattachments.blob.core.windows.net/tourmalinetrimacpilot/signatureimage/deansoucy/No-Sign.png",
+            "operatororbacode": "F106",
+            "sourcesitelocation": "15-12-050-21W5",
+            "address": {
+                "street": "3700 , 250 - 6th avenue SW",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 3H7"
+            },
+            "dateshipped": {
+                "$date": "2020-10-03T11:40:35.000Z"
+            },
+            "timeshipped": "11:40:35",
+            "receivingsitelocation": "Secure Drayton Valley 03-05-49-6W5",
+            "emergency24hrnumber": "1-877-504-4252",
+            "nameofauthorisedperson": "Dean Soucy",
+            "status": {
+                "id": "010155ef-a1f0-4192-ad73-9c3ba8ef58dd",
+                "name": "Shipped"
+            }
+        },
+        "receiver": {
+            "id": "e0ad865e-a9e7-428f-93e7-f2addd84ce07",
+            "name": "Secure Energy Services",
+            "signatureLocation": "",
+            "address": {
+                "street": "205 5 Ave SW #3600",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 2V7"
+            },
+            "receivingsitelocation": "Secure Drayton Valley 03-05-49-6W5",
+            "receivingsitelocationid": "113b5768-9b1a-4a44-a36f-a8bdb94fd14c",
+            "status": "",
+            "statusname": ""
+        },
+        "transporter": {
+            "id": "7fc12db5-3f20-40af-846d-5eee7c02e41e",
+            "name": "Trimac Energy Services Ltd.",
+            "signatureLocation": "",
+            "address": {
+                "street": "NA",
+                "city": {
+                    "id": "086099e0-eb94-4422-86e7-6bddadc6b305",
+                    "name": "Edmonton"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "NA"
+            },
+            "unitnumber": "DU2",
+            "Tractor": "TR2",
+            "driverName": "Doe Johm",
+            "Trailers": "TR2",
+            "wayBilNumber": "TT2",
+            "nameofauthorisedperson": "",
+            "status": "8769a563-04a9-4060-b3a9-61a58cdbadd8",
+            "statusname": "In Transit"
+        },
+        "manifestFile": [],
+        "erapNumber": "ERP2-0010-303",
+        "erapTelNumber": "1-800-265-0212",
+        "shippingdetails": [
+            {
+                "unnumber": "UN1268",
+                "tdgshippingname": "Petroleum Distillates, N.O.S.",
+                "PrimaryClass": "3",
+                "SubsidiaryClass": "",
+                "packinggroup": "aead26fc-448c-42f4-afb3-92c4b0633633",
+                "ToxicByInhalation": "No",
+                "quantityshipped": 1234,
+                "unitsshipped": "UN02",
+                "NumberOfPackages": 0,
+                "safetyFile": [],
+                "residue": "N"
+            }
+        ],
+        "NonRegulatedDangerousGoods": [
+            {
+                "Packages": null,
+                "Description": null,
+                "Weight": null
+            }
+        ],
+        "status": "",
+        "statusname": "",
+        "createdby": "System Admin",
+        "createdbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "createdon": {
+            "$date": "2020-10-03T11:40:35.000Z"
+        },
+        "modifiedby": "System Admin",
+        "modifiedbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "modifiedon": {
+            "$date": "2020-10-03T11:40:35.000Z"
+        }
+    },
+    {
+        "_id": "778f812e-c298-429f-b1ff-ea4496cc1b1f",
+        "formnumber": "TOC001124",
+        "Organizationid": "d5a32954-bf14-45ae-9889-be9116c4c9fd",
+        "Buid": "3ea7aa41-b380-4716-a344-24fac634687a",
+        "Facilityid": "863877f5-24d9-4115-b40a-0a97adc81576",
+        "Receivingsitelocationid": "113b5768-9b1a-4a44-a36f-a8bdb94fd14c",
+        "type": "TDG Shipping Document",
+        "statusIcon": "shipped.png",
+        "iconStatusText": "Shipped",
+        "generator": {
+            "name": "Tourmaline Oil Corp.",
+            "signatureLocation": "https://ez2trackattachments.blob.core.windows.net/tourmalinetrimacpilot/signatureimage/deansoucy/No-Sign.png",
+            "operatororbacode": "F106",
+            "sourcesitelocation": "15-12-050-21W5",
+            "address": {
+                "street": "3700 , 250 - 6th avenue SW",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 3H7"
+            },
+            "dateshipped": {
+                "$date": "2020-10-03T11:39:43.000Z"
+            },
+            "timeshipped": "11:39:43",
+            "receivingsitelocation": "Secure Drayton Valley 03-05-49-6W5",
+            "emergency24hrnumber": "1-877-504-4252",
+            "nameofauthorisedperson": "Dean Soucy",
+            "status": {
+                "id": "010155ef-a1f0-4192-ad73-9c3ba8ef58dd",
+                "name": "Shipped"
+            }
+        },
+        "receiver": {
+            "id": "e0ad865e-a9e7-428f-93e7-f2addd84ce07",
+            "name": "Secure Energy Services",
+            "signatureLocation": "",
+            "address": {
+                "street": "205 5 Ave SW #3600",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 2V7"
+            },
+            "receivingsitelocation": "Secure Drayton Valley 03-05-49-6W5",
+            "receivingsitelocationid": "113b5768-9b1a-4a44-a36f-a8bdb94fd14c",
+            "status": "",
+            "statusname": ""
+        },
+        "transporter": {
+            "id": "7fc12db5-3f20-40af-846d-5eee7c02e41e",
+            "name": "Trimac Energy Services Ltd.",
+            "signatureLocation": "",
+            "address": {
+                "street": "NA",
+                "city": {
+                    "id": "086099e0-eb94-4422-86e7-6bddadc6b305",
+                    "name": "Edmonton"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "NA"
+            },
+            "unitnumber": "DU1",
+            "Tractor": "TRA1",
+            "driverName": "DN John",
+            "Trailers": "Trail1",
+            "wayBilNumber": "TT1",
+            "nameofauthorisedperson": "",
+            "status": "8769a563-04a9-4060-b3a9-61a58cdbadd8",
+            "statusname": "In Transit"
+        },
+        "manifestFile": [],
+        "erapNumber": "ERP2-0010-303",
+        "erapTelNumber": "1-800-265-0212",
+        "shippingdetails": [
+            {
+                "unnumber": "UN2924",
+                "tdgshippingname": "MIXED OILFIELD PRODUCTION FLUID.  TREAT AS FLAMMABLE LIQUIDS, CORROSIVE N.O.S.",
+                "PrimaryClass": "3",
+                "SubsidiaryClass": "8",
+                "packinggroup": "1e1c2657-3f4e-418d-b4e6-bdea549d4e0c",
+                "ToxicByInhalation": "No",
+                "quantityshipped": 5,
+                "unitsshipped": "UN03",
+                "NumberOfPackages": 0,
+                "safetyFile": [],
+                "residue": "N"
+            }
+        ],
+        "NonRegulatedDangerousGoods": [
+            {
+                "Packages": null,
+                "Description": null,
+                "Weight": null
+            }
+        ],
+        "status": "",
+        "statusname": "",
+        "createdby": "System Admin",
+        "createdbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "createdon": {
+            "$date": "2020-10-03T11:39:43.000Z"
+        },
+        "modifiedby": "System Admin",
+        "modifiedbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "modifiedon": {
+            "$date": "2020-10-03T11:39:43.000Z"
+        }
+    },
+    {
+        "_id": "49d89449-7ea1-43d1-a099-962a48c70114",
+        "formnumber": "TOC001122",
+        "Organizationid": "d5a32954-bf14-45ae-9889-be9116c4c9fd",
+        "Buid": "3ea7aa41-b380-4716-a344-24fac634687a",
+        "Facilityid": "863877f5-24d9-4115-b40a-0a97adc81576",
+        "statusIcon": "readyForShipment.png",
+        "iconStatusText": "Ready For Shipment",
+        "type": "TDG Shipping Document",
+        "erapNumber": "ERP2-0010-303",
+        "generator": {
+            "name": "Tourmaline Oil Corp.",
+            "signatureLocation": "https://ez2trackattachments.blob.core.windows.net/tourmalinetrimacpilot/signatureimage/deansoucy/No-Sign.png",
+            "sourcesitelocation": "15-12-050-21W5",
+            "address": {
+                "street": "3700 , 250 - 6th avenue SW",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 3H7"
+            },
+            "dateshipped": {
+                "$date": "2020-10-03T11:37:47.000Z"
+            },
+            "timeshipped": "11:37:47",
+            "TruckerEmailFlag": false,
+            "emergency24hrnumber": "1-877-504-4252",
+            "nameofauthorisedperson": "Dean Soucy",
+            "status": {
+                "id": "727b68ca-9bfa-4ff8-ae52-c04a8498aed9",
+                "name": "Completed"
+            },
+            "receivingsitelocation": "Secure Drayton Valley 03-05-49-6W5"
+        },
+        "receiver": {
+            "id": "e0ad865e-a9e7-428f-93e7-f2addd84ce07",
+            "name": "Secure Energy Services",
+            "signatureLocation": "",
+            "address": {
+                "street": "205 5 Ave SW #3600",
+                "city": {
+                    "id": "12314e90-4030-4294-b32a-7c309499c454",
+                    "name": "Calgary"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "T2P 2V7"
+            },
+            "status": ""
+        },
+        "transporter": {
+            "id": "7fc12db5-3f20-40af-846d-5eee7c02e41e",
+            "name": "Trimac Energy Services Ltd.",
+            "signatureLocation": "",
+            "address": {
+                "street": "NA",
+                "city": {
+                    "id": "086099e0-eb94-4422-86e7-6bddadc6b305",
+                    "name": "Edmonton"
+                },
+                "province": {
+                    "id": "74bef420-61db-484e-abbe-d9e1da516b1b",
+                    "name": "Alberta"
+                },
+                "postalcode": "NA"
+            },
+            "unitnumber": "Driver1",
+            "Tractor": "Tracker1",
+            "driverName": "Jo Dorse",
+            "Trailers": "Trailer1",
+            "wayBilNumber": "TruckTicket1",
+            "nameofauthorisedperson": "",
+            "status": "94138c68-6313-48f9-9f72-60af45668b5c",
+            "statusname": "Completed"
+        },
+        "shippingdetails": [
+            {
+                "unnumber": "UN3494",
+                "tdgshippingname": "Petroleum sour crude oil, flammable, toxic",
+                "PrimaryClass": "3",
+                "SubsidiaryClass": "6.1",
+                "packinggroup": "aead26fc-448c-42f4-afb3-92c4b0633633",
+                "ToxicByInhalation": "Yes",
+                "quantityshipped": 4,
+                "unitsshipped": "UN02",
+                "NumberOfPackages": 0,
+                "safetyFile": [],
+                "residue": "N"
+            }
+        ],
+        "NonRegulatedDangerousGoods": [
+            {
+                "Packages": "Packages1234",
+                "Description": "Description1234",
+                "Weight": "1000 m3"
+            }
+        ],
+        "manifestFile": [],
+        "erapTelNumber": "1-800-265-0212",
+        "status": "",
+        "createdbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "createdby": "System Admin",
+        "createdon": {
+            "$date": "2020-10-03T11:37:47.000Z"
+        },
+        "modifiedbyid": "192a2c51-facc-4fc7-8ba5-79b467035b80",
+        "modifiedby": "System Admin",
+        "modifiedon": {
+            "$date": "2020-10-03T11:38:56.000Z"
+        }
+    }
+
+]

@@ -1,0 +1,7 @@
+{
+  "name": "e2zTrack",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

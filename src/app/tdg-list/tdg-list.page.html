@@ -1,0 +1,96 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>tdgList</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title_text">Document List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="getDocumentList($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+       <ion-row>
+         <ion-col size="6">
+
+         </ion-col>
+         <ion-col size="6" class="text_align">
+          Total Live Documents :{{totalLiveDoc}}
+         </ion-col>
+       </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let document of documentList" class="item-c" lines="none">
+    
+     <ion-grid>
+        <ion-row>
+          <ion-col>
+           <span><b>Document ID: </b>{{document.formnumber}}</span>
+          </ion-col>
+          <ion-col>
+            <span><b>Carrier: </b>{{document.transporter.name}}</span> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+           <span><b>Source Site Location: </b>{{document.generator.sourcesitelocation}}</span>
+          </ion-col>
+          <ion-col>
+            <span><b>Generated on: </b>{{DateShortFormat(document.createdon)}}</span> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+           <span><b>Consignee: </b>{{document.receiver.name}}</span>
+          </ion-col>
+          <ion-col>
+            <span><b>Shipped on: </b>{{DateShortFormat(document.generator.dateshipped)}}</span> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <span><b>Last updated on: </b>{{DateShortFormat(document.modifiedon)}}</span> 
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+      <ion-icon  class="icon_color" name="pencil" slot="end" (click)="editTDG(document)"></ion-icon>
+      <ion-icon class="icon_color" name="document-outline" slot="end" (click)="viewTDG(document)"></ion-icon>
+    </ion-item>
+
+
+    <!-- <ion-item class="item-c">    
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+           <span>Document Id: ASG90887</span>
+          </ion-col>
+          <ion-col>
+            <span>Carrier Id: xyz company</span> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+           <span>Source site Location: ASG90887</span>
+          </ion-col>
+          <ion-col>
+            <span>Genarated on: xyz company</span> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-icon name="pencil" slot="end"></ion-icon>
+      <ion-icon name="document-outline" slot="end"></ion-icon>
+    </ion-item> -->
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,241 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>TDG Truck Ticket</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title_text">TDG Shipping Document</ion-title>
+    <ion-buttons slot="end" class="text_view">
+      Truck Ticket ID : {{documentDetail.formnumber}}
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">  
+    <ion-grid>
+
+      <ion-row class="row_1">
+        <ion-col>
+          CONSIGNOR
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+         <span class="text_size"><b>Company Name: </b>{{documentDetail.generator.name}}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Load Point: </b>{{documentDetail.generator.sourcesitelocation}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="dotted-border">
+          <span>Mailing Address</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Address: </b>{{documentDetail.generator.address.street}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>City: </b>{{documentDetail.generator.address.city.name}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Province: </b>{{documentDetail.generator.address.province.name}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Postal Code: </b>{{documentDetail.generator.address.postalcode}}</span> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-item>
+
+  <ion-item lines="none">  
+    <ion-grid>
+      <ion-row class="row_1">
+        <ion-col>
+          CARRIER
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+         <span class="text_size"><b>Company Name: </b>{{documentDetail.transporter.name}}</span>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Driver/ Unit#: </b>{{documentDetail.transporter.unitnumber}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Truck Ticket: </b>{{documentDetail.transporter.wayBilNumber}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Tractor #: </b>{{documentDetail.transporter.Tractor}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Trailer(s) : </b>{{documentDetail.transporter.Trailers}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Driver Name :</b> {{documentDetail.transporter.driverName}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row class="dotted-border-top">
+        <ion-col>
+          <span class="text_size"><b>Emergency 24 Hour No: </b>{{documentDetail.generator.emergency24hrnumber}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>ERAP Number: </b>{{documentDetail.erapNumber}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>ERAP Tel No: </b>{{documentDetail.erapTelNumber}}</span> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-item>
+
+  <ion-item lines="none">  
+    <ion-grid>
+      <ion-row class="row_1">
+        <ion-col>
+          CONSIGNEE
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+         <span class="text_size"><b>Company Name: </b>{{documentDetail.receiver.name}}</span>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Destination (Delivery Point) : </b>{{documentDetail.generator.receivingsitelocation}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="dotted-border">
+          <span>Mailing Address</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Address: </b>{{documentDetail.receiver.address.street}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>City: </b>{{documentDetail.receiver.address.city.name}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Province: </b>{{documentDetail.receiver.address.province.name}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Postal Code: </b>{{documentDetail.receiver.address.postalcode}}</span> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-item>
+
+
+
+  <ion-item lines="none">  
+    <ion-grid>
+      <ion-row class="row_1">
+        <ion-col>
+          ATTACHMENTS
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="dotted-border">
+          <span>Shipping Document:</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <ion-item lines="none">  
+    <ion-grid>
+      <ion-row class="row_1">
+        <ion-col>
+          SHIPMENT DETAILS
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>REGULATED DANGEROUS GOODS:</b></span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>UN Number: </b>{{documentDetail.shippingdetails[0].unnumber}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Shipping Name: </b>{{documentDetail.shippingdetails[0].tdgshippingname}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Primary Class: </b>{{documentDetail.shippingdetails[0].PrimaryClass}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Subsidiary Class: </b>{{documentDetail.shippingdetails[0].SubsidiaryClass}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Packing Group: </b>{{documentDetail.shippingdetails[0].packinggroup}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Hazard Description: </b>{{documentDetail.shippingdetails[0].ToxicByInhalation}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Total Quantity: </b>{{documentDetail.shippingdetails[0].quantityshipped}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Units L/Kg: </b>{{documentDetail.shippingdetails[0].unitsshipped}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>NON REGULATED DANGEROUS GOODS:</b></span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Packages: </b>{{documentDetail.NonRegulatedDangerousGoods[0].Packages}}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="text_size"><b>Description: </b>{{documentDetail.NonRegulatedDangerousGoods[0].Description}}</span> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text_size"><b>Weight: </b>{{documentDetail.NonRegulatedDangerousGoods[0].Weight}}</span> 
+        </ion-col>
+  
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-content>
