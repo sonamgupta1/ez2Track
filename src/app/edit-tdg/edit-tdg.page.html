@@ -11,7 +11,7 @@
     </ion-buttons>
     <ion-title class="title_text">TDG Shipping Document</ion-title>
     <ion-buttons slot="end" class="text_view">
-      Truck Ticket ID : {{documentDetail.formnumber}}
+      TDG Shipping Document ID : {{documentDetail?.formnumber}}
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -489,9 +489,17 @@
             </ion-col>
             <ion-col size="6">
               <ion-item class="text_size" lines="none" transparent>
-                <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
+                <!-- <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
                 <ion-input  readonly="true" formControlName="ConsignorStatus" (keyup.enter)="onEnter()" type="text">
-                </ion-input>
+
+                </ion-input> -->
+
+                <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
+                <ion-select class="edit_text1" formControlName="ConsignorStatus" disabled ="{{isEnabled}}">
+                 <!-- <ion-select-option value="Draft">Draft</ion-select-option> -->
+                 <ion-select-option value="Completed">Completed</ion-select-option>
+                 <ion-select-option value="Shipped">Shipped</ion-select-option>
+               </ion-select>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -517,8 +525,17 @@
   
           <ion-col size="6">
             <ion-item  class="text_size" lines="none" transparent>
+              <!-- <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
+              <ion-input type="text" formControlName="CarrierStatus" readonly> </ion-input> -->
+
               <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
-              <ion-input type="text" formControlName="CarrierStatus" readonly> </ion-input>
+              <ion-select class="edit_text1" formControlName="CarrierStatus" (ionChange)="changeEnvironment($event)">
+               <!-- <ion-select-option value="Draft">Draft</ion-select-option> -->
+               <ion-select-option value="Completed">Completed</ion-select-option>
+               <ion-select-option value="In Transit">In Transit</ion-select-option>
+               <ion-select-option value="Delivered">Delivered</ion-select-option>
+               <ion-select-option value="Residue">Residue</ion-select-option>
+             </ion-select>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -562,7 +579,7 @@
            <ion-col size="6">
              <ion-item class="text_size" lines="none" transparent>
                <ion-label class="ion-text-wrap text_design" fixed>Status: </ion-label>
-               <ion-select class="edit_text1" formControlName="ConsigneeStatus">
+               <ion-select class="edit_text1" formControlName="ConsigneeStatus" disabled ="{{isEnabled}}">
                 <ion-select-option value="Received">Received</ion-select-option>
                 <ion-select-option value="Residue">Residue</ion-select-option>
               </ion-select>

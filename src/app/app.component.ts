@@ -27,16 +27,6 @@ export class AppComponent implements OnInit {
       url: 'tdg-list',
       icon: 'archive'
     }
-    // {
-    //   title: 'TDG View',
-    //   url: 'view-tdg',
-    //   icon: 'archive'
-    // },
-    // {
-    //   title: 'TDG Edit',
-    //   url: 'edit-tdg',
-    //   icon: 'archive'
-    // }
   ];
 
   constructor(
@@ -56,7 +46,7 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.updateMultiDocuments();
+     // this.updateMultiDocuments();
       if (this.platform.is('cordova')) {
         this.setupNetwork();
         console.log("Running on mobile brower not true", this.platform.isLandscape());
@@ -78,7 +68,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const path = window.location.pathname.split('folder/')[1];
-    console.log("path====>", path)
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
@@ -86,13 +75,11 @@ export class AppComponent implements OnInit {
 
   setupNetwork() {
     console.log("setupNetwork");
-
+    this.network.onChange().subscribe();
     this.network.onDisconnect().subscribe(() => {
-      console.log('you are offline');
       this.apiService.isOnline = false;
     });
     this.network.onConnect().subscribe(() => {
-      console.log('you are online');
       this.apiService.isOnline = true;
       this.updateMultiDocuments();
     });
@@ -103,6 +90,9 @@ export class AppComponent implements OnInit {
     let finalData = this.listConversion()
     console.log("final data===>", finalData)
     if (finalData) {
+      console.log("inside if")
+      
+    if(finalData.length>0){
       this.apiService.putData(finalData, 'manifestapi/updatetmultipletdgbyid').then((res) => {
         // this.loader.dismissLoading();
 
@@ -121,6 +111,10 @@ export class AppComponent implements OnInit {
           }
         }
       })
+    }
+    else{
+      console.log("no data to update!")
+    }
 
     }
     else{
@@ -139,8 +133,8 @@ export class AppComponent implements OnInit {
     console.log("storedDocs====>", storedDocs);
 
     for(var i=0; i< docLength; i++){
-      console.log("i=====>", i, updatedDocList[0].formid);
-      delete storedDocs[updatedDocList[0].formid];
+      console.log("i=====>", i, updatedDocList[i].formid);
+      delete storedDocs[updatedDocList[i].formid];
   
        console.log("inside loop=====>",storedDocs);
       //this.findAndDelete(updatedDocList[0].formid);
@@ -148,6 +142,8 @@ export class AppComponent implements OnInit {
     }
 
     console.log("storedDocsstored======>",storedDocs);
+    localStorage.setItem("documentHistory", JSON.stringify(storedDocs));
+
    
   }
 

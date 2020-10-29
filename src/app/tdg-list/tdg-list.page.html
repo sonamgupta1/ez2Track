@@ -50,6 +50,24 @@
             <span><b>Generated on: </b>{{DateShortFormat(document.createdon)}}</span> 
           </ion-col>
         </ion-row>
+
+        <!-- <ion-row>
+          <ion-col size="3">
+          </ion-col>
+          <ion-col size="3">
+          </ion-col>
+          <ion-item>
+          <ion-col size="3">
+            <ion-thumbnail slot="start">
+              <ion-img src="../../assets/icon/edit.png" ></ion-img>
+            </ion-thumbnail>
+            <ion-thumbnail slot="end">
+              <ion-img src="../../assets/icon/view.png" ></ion-img>
+            </ion-thumbnail>
+          </ion-col>
+        </ion-item>
+        </ion-row> -->
+
         <ion-row>
           <ion-col>
            <span><b>Consignee: </b>{{document.receiver.name}}</span>
@@ -65,32 +83,10 @@
         </ion-row>
       </ion-grid> 
       <ion-icon  class="icon_color" name="pencil" slot="end" (click)="editTDG(document)"></ion-icon>
-      <ion-icon class="icon_color" name="document-outline" slot="end" (click)="viewTDG(document)"></ion-icon>
+      <!-- <ion-icon>
+         <ion-img src="../../assets/icon/edit.png" style="height: 30px; width: 30px;"></ion-img>
+      </ion-icon> -->
+      <ion-icon class="icon_color" name="document-outline" slot="end" (click)="viewTDG(document)"></ion-icon> 
     </ion-item>
-
-
-    <!-- <ion-item class="item-c">    
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-           <span>Document Id: ASG90887</span>
-          </ion-col>
-          <ion-col>
-            <span>Carrier Id: xyz company</span> 
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-           <span>Source site Location: ASG90887</span>
-          </ion-col>
-          <ion-col>
-            <span>Genarated on: xyz company</span> 
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-icon name="pencil" slot="end"></ion-icon>
-      <ion-icon name="document-outline" slot="end"></ion-icon>
-    </ion-item> -->
-
   </ion-list>
 </ion-content>

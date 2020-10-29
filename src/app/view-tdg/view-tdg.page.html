@@ -12,7 +12,7 @@
     </ion-buttons>
     <ion-title class="title_text">TDG Shipping Document</ion-title>
     <ion-buttons slot="end" class="text_view">
-      Truck Ticket ID : {{documentDetail.formnumber}}
+      TDG Shipping Document ID : {{documentDetail?.formnumber}}
     </ion-buttons>
     
   </ion-toolbar>
@@ -214,7 +214,7 @@
           <span class="text_size"><b>Total Quantity: </b>{{documentDetail.shippingdetails[0].quantityshipped}}</span> 
         </ion-col>
         <ion-col>
-          <span class="text_size"><b>Units L/Kg: </b>{{documentDetail.shippingdetails[0].unitsshipped}}</span> 
+          <span class="text_size"><b>Units L/Kg: </b>{{RegUnitName(documentDetail.shippingdetails[0].unitsshipped)}}</span> 
         </ion-col>
       </ion-row>
       <ion-row>

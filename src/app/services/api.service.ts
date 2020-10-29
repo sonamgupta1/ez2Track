@@ -1,17 +1,30 @@
 // import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Network } from '@ionic-native/network/ngx';
 
 
 @Injectable()
 export class ApiServiceProvider {
     public baseUrl = 'https://ez2trackmobileapi.azurewebsites.net/api/';
 
-    isOnline: boolean = false;
-    constructor(public http: HttpClient) {
+    isOnline: boolean = true;
+    constructor(public http: HttpClient,  private network: Network) {
         console.log('Hello ApiServiceProvider Provider');
+        this.setupNetwork();
     }
-
+  setupNetwork() {
+    console.log("setupNetwork");
+    this.network.onChange().subscribe();
+    this.network.onDisconnect().subscribe(() => {
+      console.log('you are offline in api service page');
+      this.isOnline = false;
+    });
+    this.network.onConnect().subscribe(() => {
+      console.log('you are online in api service page');
+      this.isOnline = true;
+    });
+  };
 
     postData(data, url) {
         return new Promise((resolve, reject) => {

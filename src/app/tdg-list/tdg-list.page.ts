@@ -11,6 +11,7 @@ import { LoaderService } from '../services/loader.service';
 import { ToastController } from '@ionic/angular';
 import { AuthGuardService } from '../services/auth-guard.service';
 
+
 @Component({
   selector: 'app-tdg-list',
   templateUrl: './tdg-list.page.html',
@@ -22,17 +23,21 @@ export class TdgListPage implements OnInit {
   documentList: any;
   headers = new Headers();
   totalLiveDoc: number;
-  // isOnline: boolean;
-
-
 
   constructor(private router: Router, public httpClient: HttpClient, private networkService: NetworkService, private network: Network,
     private loader: LoaderService, private apiService: ApiServiceProvider, public toastController: ToastController,
     public auth: AuthGuardService) {
 
-
     console.log('isOnline list page', this.apiService.isOnline);
 
+    if (navigator.onLine) {
+      this.apiService.isOnline = true;
+      console.log('Internet is connected', this.apiService.isOnline);
+
+   } else {
+    this.apiService.isOnline = false;
+      console.log('No internet connection', this.apiService.isOnline);
+   }
 
   }
 
@@ -40,28 +45,17 @@ export class TdgListPage implements OnInit {
      console.log('calling ngoninit of list page');
     // validate whether user is already logged in or not
     this.auth.canActivate();
- 
-    if (this.apiService.isOnline) {
-      console.log("online===>", this.apiService.isOnline);
-      this.getDocumentList(null);
-    }
-    else {
-      console.log("offline===>", this.apiService.isOnline);
-       this.getOfflineDocument(null);
-    }
 
   }
-
-  ionViewWillEnter(){
-    console.log("offline mode called");
-    this.auth.canActivate();
  
+  ionViewDidEnter(){
+    this.auth.canActivate();
     if (this.apiService.isOnline) {
-      console.log("online ion view will enter===>", this.apiService.isOnline);
+      console.log("online ion view Did list page enter===>");
       this.getDocumentList(null);
     }
     else {
-      console.log("offline ion view will enter===>", this.apiService.isOnline);
+      console.log("offline ion view Did list page enter===>", this.apiService.isOnline);
        this.getOfflineDocument(null);
     }
   }
@@ -71,6 +65,7 @@ export class TdgListPage implements OnInit {
     if (localStorage.getItem("documentList")) {
       this.documentList = JSON.parse(localStorage.getItem("documentList"))
       this.totalLiveDoc = this.documentList.length;
+      this.sortData();
       if(event)
       event.target.complete();
  
@@ -86,6 +81,7 @@ export class TdgListPage implements OnInit {
 
 
   getDocumentList(event) {
+    if (this.apiService.isOnline){
       this.loader.presentLoading();
       this.apiService.getRequest('manifestapi/getmanifestlist/demoez2Track').then((res) => {
         this.loader.dismissLoading();
@@ -94,11 +90,9 @@ export class TdgListPage implements OnInit {
         localStorage["documentList"] = JSON.stringify(myquotes);
         this.totalLiveDoc = myquotes.length;
         console.log('data', myquotes.length);
+        this.sortData();
         if(event)
-          event.target.complete();
-       
-        // now store tdg list details in localstorage
-  
+          event.target.complete();  
       }).catch((err) => {
         this.loader.dismissLoading();
   
@@ -112,7 +106,19 @@ export class TdgListPage implements OnInit {
         if (event)
           event.target.complete();
       })
+    }
+    else{
+      this.getOfflineDocument(event);
+    }
   }
+
+  sortData() {
+    return this.documentList.sort((a, b) => {   
+      return <any>new Date(b.generator.dateshipped) - <any>new Date(a.generator.dateshipped);
+    });
+  }
+
+
 
   //// To open view TDG Page /////
 
@@ -149,10 +155,11 @@ export class TdgListPage implements OnInit {
       .then(json => {
         this.documentList = json;
         console.log(this.documentList);
-      });
+
+    });
   }
 
-
+ 
 
 
   ////Date formater /////////
@@ -172,12 +179,9 @@ export class TdgListPage implements OnInit {
     let year = anyDate.getFullYear();
 
 
-   let dateToShown = monthName+" "+ day + " "+ year;
-   return dateToShown;
-// and it can represent itself in the custom format defined above.
-console.log("date to be=====>", monthName+" "+ day + " "+ year );    // 10-Jun-2018
-
-    
+    let dateToShown = monthName+" "+ day + ", "+ year;
+      return dateToShown;
+    // and it can represent itself in the custom format defined above.  
   }
 
 
@@ -215,9 +219,5 @@ console.log("date to be=====>", monthName+" "+ day + " "+ year );    // 10-Jun-2
     });
     toast.present();
   }
-  hack(val) {
-    val = Array.from(val);
-    console.log(val);
-    return val;
-  }
+
 }

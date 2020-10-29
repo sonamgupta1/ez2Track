@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { ApiServiceProvider } from '../services/api.service';
 import { LoaderService } from '../services/loader.service';
+import { AuthGuardService } from '../services/auth-guard.service';
+import { Network } from '@ionic-native/network/ngx';
+
 @Component({
   selector: 'app-edit-tdg',
   templateUrl: './edit-tdg.page.html',
@@ -21,19 +24,41 @@ export class EditTdgPage implements OnInit {
   userDetail: any;
   private counter = 0;
   postData: any;
+  formId: any;
+  isEnabled: boolean = true;
 
   headers = new Headers();
   constructor(public formBuilder: FormBuilder, public httpClient: HttpClient, private route: ActivatedRoute, private router: Router,
-    public toastController: ToastController, private loader: LoaderService, private apiService: ApiServiceProvider) {
+    public toastController: ToastController, private loader: LoaderService, private apiService: ApiServiceProvider, public auth: AuthGuardService,  private network: Network) {
 
 
-    // if (this.router.getCurrentNavigation().extras.state) {
-    //   const state = this.router.getCurrentNavigation().extras.state;
-    //   this.documentDetail = state.member ? JSON.parse(state.member) : '';
-    //   this.type = state.type ? state.type : '';
-    //   console.log("document detail====>", this.documentDetail)
-    // }
+    if (this.router.getCurrentNavigation().extras.state) {
+      const state = this.router.getCurrentNavigation().extras.state;
+      this.documentDetail = state.member ? JSON.parse(state.member) : '';
+      this.type = state.type ? state.type : '';
+      console.log("document detail====>", this.documentDetail)
+    }
 
+    if (navigator.onLine) {
+      this.apiService.isOnline = true;
+      console.log('Internet is connected', this.apiService.isOnline);
+    } 
+    else {
+       this.apiService.isOnline = false;
+      console.log('No internet connection', this.apiService.isOnline);
+    }
+
+
+    // let time = new Date();
+
+    // var date = new Date(); // Or the date you'd like converted.
+
+    // var isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
+
+
+    // console.log("isoDateTime",isoDateTime)
+
+    // console.log("ssssssss", time.toISOString())
     this.intilizedBankForm();
 
   }
@@ -95,14 +120,42 @@ export class EditTdgPage implements OnInit {
   }
   ngOnInit() {
     this.selectedTab = 'consignor';
-    // this.sendPostRequest();
+    console.log("ngOnit function called edit page.")
+   this.auth.canActivate();
 
-    if (this.router.getCurrentNavigation().extras.state) {
-      const state = this.router.getCurrentNavigation().extras.state;
-      this.documentDetail = state.member ? JSON.parse(state.member) : '';
-      this.type = state.type ? state.type : '';
-      console.log("document detail====>", this.documentDetail)
-    }
+
+    this.userId = JSON.parse(localStorage.getItem('user')).userid;
+    this.userDetail = JSON.parse(localStorage.getItem('user'));
+    // if (this.apiService.isOnline) {
+    //   alert("Wao !, you are online.")
+    //   console.log("online===>", this.apiService.isOnline);
+    //   this.fetchData();
+    // }
+    // else {
+    //   console.log("offline===>", this.apiService.isOnline);
+    //     alert("Oh! offline mode activated");
+
+    //   if (this.router.getCurrentNavigation().extras.state) {
+    //     const state = this.router.getCurrentNavigation().extras.state;
+    //     this.documentDetail = state.member ? JSON.parse(state.member) : '';
+    //     this.type = state.type ? state.type : '';
+    //     console.log("document detail====>", this.documentDetail);
+    //     this.intializedForm();
+
+    //   }
+    //   else {
+    //     this.documentDetail = [];
+    //   }
+
+    // }
+  }
+
+
+  ionViewDidEnter(){
+    this.selectedTab = 'consignor';
+    
+    console.log("ionView Did Enter on edit page.");
+   this.auth.canActivate();
 
 
     this.userId = JSON.parse(localStorage.getItem('user')).userid;
@@ -112,12 +165,24 @@ export class EditTdgPage implements OnInit {
       this.fetchData();
     }
     else {
-      console.log("offline===>", this.apiService.isOnline);
-      if (this.router.getCurrentNavigation().extras.state) {
-        const state = this.router.getCurrentNavigation().extras.state;
+      console.log("offline===>", this.apiService.isOnline, this.formId);
+      this.getDetailOffline(this.formId);
+      if (history.state) {
+        const state = history.state;
         this.documentDetail = state.member ? JSON.parse(state.member) : '';
         this.type = state.type ? state.type : '';
         console.log("document detail====>", this.documentDetail);
+        if(this.documentDetail.shippingdetails[0].packinggroup){
+          if(this.documentDetail.shippingdetails[0].packinggroup == '1e1c2657-3f4e-418d-b4e6-bdea549d4e0c'){
+           this.documentDetail.shippingdetails[0].packinggroup = 'II';
+          }
+          else if(this.documentDetail.shippingdetails[0].packinggroup == 'aead26fc-448c-42f4-afb3-92c4b0633633'){
+            this.documentDetail.shippingdetails[0].packinggroup = 'I';
+          }
+          else if(this.documentDetail.shippingdetails[0].packinggroup == 'eb55aa27-b01f-443f-aa0f-4f88e972b6b3'){
+            this.documentDetail.shippingdetails[0].packinggroup = 'III';
+          }
+        }
         this.intializedForm();
 
       }
@@ -126,8 +191,43 @@ export class EditTdgPage implements OnInit {
       }
 
     }
-
   }
+
+  getDetailOffline(formId){
+   let documents = JSON.parse(localStorage.getItem("documentList"));
+   console.log("documents", documents);
+   if(documents){
+    for(var i=0; i<documents.length; i++){
+     if(formId == documents[i]._id){
+      this.documentDetail = documents[i];
+      if(this.documentDetail.shippingdetails[0].packinggroup){
+        if(this.documentDetail.shippingdetails[0].packinggroup == '1e1c2657-3f4e-418d-b4e6-bdea549d4e0c'){
+         this.documentDetail.shippingdetails[0].packinggroup = 'II';
+        }
+        else if(this.documentDetail.shippingdetails[0].packinggroup == 'aead26fc-448c-42f4-afb3-92c4b0633633'){
+          this.documentDetail.shippingdetails[0].packinggroup = 'I';
+        }
+        else if(this.documentDetail.shippingdetails[0].packinggroup == 'eb55aa27-b01f-443f-aa0f-4f88e972b6b3'){
+          this.documentDetail.shippingdetails[0].packinggroup = 'III';
+        }
+      }
+      console.log("document detail====>", this.documentDetail);
+      this.intializedForm();
+     }
+    }
+   }
+   else{
+    this.documentDetail = [];
+   }
+  }
+
+  changeEnvironment(statusName){
+       console.log("statusName",statusName.detail.value)
+      //  if()
+  }
+
+
+
   intializedForm(){
 
     this.ApplicationForm = this.formBuilder.group({
@@ -140,7 +240,7 @@ export class EditTdgPage implements OnInit {
       ConsignorProvince: [this.documentDetail.generator.address.province.name],
       ConsignorErap_Reference: [this.documentDetail.erapNumber],
       ConsignorPostalCode: [this.documentDetail.generator.address.postalcode],
-      ConsignorERAPTelNumber: [''],
+      ConsignorERAPTelNumber:[this.documentDetail.erapTelNumber],
       ConsignorDateShipped: [this.documentDetail.generator.dateshipped],
       ConsignorNameCarrier: [this.documentDetail.transporter.name],
       ConsignorConsigneeName: [this.documentDetail.receiver.name],
@@ -193,6 +293,17 @@ export class EditTdgPage implements OnInit {
       this.loader.dismissLoading();
       this.documentDetail = res[0];
       console.log('data', res[0]);
+      if(this.documentDetail.shippingdetails[0].packinggroup){
+        if(this.documentDetail.shippingdetails[0].packinggroup == '1e1c2657-3f4e-418d-b4e6-bdea549d4e0c'){
+         this.documentDetail.shippingdetails[0].packinggroup = 'II';
+        }
+       else if(this.documentDetail.shippingdetails[0].packinggroup == 'aead26fc-448c-42f4-afb3-92c4b0633633'){
+         this.documentDetail.shippingdetails[0].packinggroup = 'I';
+       }
+       else if(this.documentDetail.shippingdetails[0].packinggroup == 'eb55aa27-b01f-443f-aa0f-4f88e972b6b3'){
+         this.documentDetail.shippingdetails[0].packinggroup = 'III';
+       }
+      }
       this.intializedForm();
     }).catch((err) => {
       this.loader.dismissLoading();
@@ -223,7 +334,9 @@ export class EditTdgPage implements OnInit {
         "Accept": 'application/json'
       })
     }
+    var date = new Date(); // Or the date you'd like converted.
 
+    var isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
   
     this.postData = {
       "domainname": "tourmalinetest",
@@ -237,7 +350,7 @@ export class EditTdgPage implements OnInit {
       "createdby": "admin",
       "modifiedby": this.userDetail.username, ///user login detail
       "modifiedbyid": this.userDetail.userid, //// user id after login
-      "modifiedon": "2020-10-14T06:07:49.000Z"   //// current time
+      "modifiedon": isoDateTime   //// current time
     }
 
 
